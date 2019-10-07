@@ -199,7 +199,7 @@ const PortfolioItemsTextHorizontal = () => {
                   alt="PortfolioItemImage"
                 />
                 <PortfolioItemNameLink
-                  to={`/portfolio/${portfolioItem.node.slug}`}
+                  to={`/${portfolioItem.node.slug}`}
                   itemimage={`${portfolioItem.node.featured_media.source_url}`}
                   onMouseEnter={changeStyle}
                   onMouseLeave={resetStyle}
