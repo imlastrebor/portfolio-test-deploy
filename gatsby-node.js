@@ -10,6 +10,9 @@ const slash = require(`slash`)
 // Will create pages for WordPress pages (route : /{slug})
 // Will create pages for WordPress posts (route : /post/{slug})
 exports.createPages = ({ graphql, actions }) => {
+  if (process.env.NODE_ENV === "development") {
+    process.env.GATSBY_WEBPACK_PUBLICPATH = "/"
+  }
   const { createRedirect } = actions
   createRedirect({
     fromPath: "/",
@@ -134,6 +137,7 @@ exports.createPages = ({ graphql, actions }) => {
                         title
                         id
                         caption
+                        source_url
                         localFile {
                           childImageSharp {
                             fixed(width: 400, height: 400) {
