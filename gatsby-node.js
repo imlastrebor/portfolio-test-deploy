@@ -3,6 +3,9 @@ const Promise = require(`bluebird`)
 const path = require(`path`)
 const slash = require(`slash`)
 
+if (process.env.NODE_ENV === "development") {
+  process.env.GATSBY_WEBPACK_PUBLICPATH = "/"
+}
 // Implement the Gatsby API “createPages”. This is
 // called after the Gatsby bootstrap is finished so you have
 // access to any information necessary to programmatically
@@ -10,9 +13,6 @@ const slash = require(`slash`)
 // Will create pages for WordPress pages (route : /{slug})
 // Will create pages for WordPress posts (route : /post/{slug})
 exports.createPages = ({ graphql, actions }) => {
-  if (process.env.NODE_ENV === "development") {
-    process.env.GATSBY_WEBPACK_PUBLICPATH = "/"
-  }
   const { createRedirect } = actions
   createRedirect({
     fromPath: "/",
